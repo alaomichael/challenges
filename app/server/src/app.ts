@@ -17,9 +17,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));
 app.get('/openapi.json', (req, res) => res.json(openApiDocument));
 
 // API Routes
-app.use('/api/suppliers', supplierRouter);
-app.use('/api/products', productRouter);
-app.use('/api/inventory', inventoryRouter);
+app.use('/api/v1/suppliers', supplierRouter);
+app.use('/api/v1/products', productRouter);
+app.use('/api/v1/inventory', inventoryRouter);
 
 app.use('/health', (req,res) =>
 {
