@@ -1,5 +1,5 @@
 export {};
-async function processLimitedWorker<T, R>(
+async function runWithConcurrency<T, R>(
     items: T[],
     limit: number,
     operation: (item: T) => Promise<R>

@@ -1,15 +1,6 @@
 // use prisma-8
 // Contract inferred from the live database schema. Edit as needed, then run `prisma contract emit`.
 
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 model Supplier {
   id           Int               @id @default(autoincrement())
   name         String            @unique
@@ -35,7 +26,7 @@ model SupplierProduct {
   quantity     Int      @default(0)
   reorderLevel Int      @default(10)
   createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  updatedAt DateTime @onUpdate(now()) @onCreate(now())
 
   supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Restrict)
   product  Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
